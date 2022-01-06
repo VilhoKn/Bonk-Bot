@@ -14,8 +14,9 @@ class Bonk(commands.Cog):
 
         split_message = message.content.split(" ")
         if split_message[0].lower() == "bonk":
-            if split_message[1][0] == "<" and split_message[1][-1] == ">":
-                _id = int(name.replace("<", "").replace("@", "").replace(">", "").replace("!", ""))
+            mention_string = split_message[1]
+            if mention_string[0] == "<" and mention_string[-1] == ">":
+                _id = int(mention_string.replace("<", "").replace("@", "").replace(">", "").replace("!", ""))
                 member = message.guild.get_member(_id)
 
                 if not member: return
