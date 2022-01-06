@@ -15,8 +15,8 @@ class Bonk(commands.Cog):
         split_message = message.split(" ")
         if split_message[0].lower() == "bonk":
             if split_message[1][0] == "<" and split_message[1][-1] == ">":
-		        _id = int(name.replace("<", "").replace("@", "").replace(">", "").replace("!", ""))
-		        member = message.guild.get_member(_id)
+                _id = int(name.replace("<", "").replace("@", "").replace(">", "").replace("!", ""))
+                member = message.guild.get_member(_id)
 
                 if not member: return
 
@@ -28,10 +28,10 @@ class Bonk(commands.Cog):
 
     async def get_links():
         with open("../../files/text/bonk_links.txt", "r") as f:
-	        f_lines = f.readlines()
-	        BONKS = []
-	        for i in f_lines:
-		        BONKS.append(i.strip("\n"))
+            f_lines = f.readlines()
+            BONKS = []
+            for i in f_lines:
+                BONKS.append(i.strip("\n"))
         return BONKS
 
 
