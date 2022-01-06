@@ -27,6 +27,8 @@ class Bonk(commands.Cog):
                 bonks = await get_links()
                 embed.set_image(random.choice(bonks))
 
+                await ctx.send(embed=embed)
+
     async def get_links():
         with open("../../files/text/bonk_links.txt", "r") as f:
             f_lines = f.readlines()
