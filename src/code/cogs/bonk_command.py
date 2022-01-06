@@ -12,7 +12,7 @@ class Bonk(commands.Cog):
     async def on_message(self, message):
         if message.author.bot: return
 
-        split_message = message.split(" ")
+        split_message = message.content.split(" ")
         if split_message[0].lower() == "bonk":
             if split_message[1][0] == "<" and split_message[1][-1] == ">":
                 _id = int(name.replace("<", "").replace("@", "").replace(">", "").replace("!", ""))
