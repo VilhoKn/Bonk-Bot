@@ -1,7 +1,11 @@
+import discord 
 from discord.ext import commands
 from info import TOKEN
 
-bot = commands.Bot()
+intents = discord.Intents.default()
+intents.members = True
+
+bot = commands.Bot(intents=intents)
 
 bot.load_extension('cogs.bonk_command')
 

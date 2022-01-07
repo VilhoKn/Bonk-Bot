@@ -11,7 +11,7 @@ class Bonk(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
         if message.author.bot: return
-
+        
         split_message = message.content.split(" ")
         if split_message[0].lower() == "bonk":
             mention_string = split_message[1]
