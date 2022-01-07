@@ -3,6 +3,7 @@ import random
 from discord.commands import slash_command
 from discord.ext import commands
 
+import utils
 
 class Help(commands.Cog):
     def __init__(self, bot):
@@ -22,8 +23,11 @@ class Help(commands.Cog):
                 desc = f"**Bonk Bot** is a fun bot made to bonk people.\nUsing it is simple, just type `bonk @member`"
                 embed = discord.Embed(description = desc)
                 embed.set_footer(text="Pfp by BunnySimps#0001 • Developer Sivakka#4938")
-
                 await message.channel.send(embed=embed)
+                try:
+                    await utils.update_commands("help", message.author)
+                except Exception as e:
+                    print("Error: " + e)
 
 
 def setup(bot):

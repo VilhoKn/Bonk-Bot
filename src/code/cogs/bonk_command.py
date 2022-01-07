@@ -3,7 +3,7 @@ import random
 from discord.commands import slash_command
 from discord.ext import commands
 
-from utils import get_links
+import utils
 
 
 class Bonk(commands.Cog):
@@ -26,10 +26,13 @@ class Bonk(commands.Cog):
                 desc = f"**{message.author.display_name}** bonked **{member.display_name}**"
                 embed = discord.Embed(description = desc)
 
-                bonks = await get_links()
+                bonks = await utils.get_links()
                 embed.set_image(url=random.choice(bonks))
-
                 await message.channel.send(embed=embed)
+                try:
+                    await utils.update_commands("bonk", message.author)
+                except Exception as e:
+                    print("Error: " + e)
 
 
 def setup(bot):
