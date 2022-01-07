@@ -30,7 +30,7 @@ class Bonk(commands.Cog):
                 await message.channel.send(embed=embed)
 
     async def get_links(self):
-        with open("../../files/text/bonk_links.txt", "r") as f:
+        with open("../files/text/bonk_links.txt", "r") as f:
             f_lines = f.readlines()
             BONKS = []
             for i in f_lines:
