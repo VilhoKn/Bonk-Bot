@@ -15,7 +15,7 @@ bot.load_extension('cogs.help_command')
 
 @bot.user_command(name="Bonk this person")
 async def callbackname(ctx, member : discord.Member):
-    desc = f"**{ctx.author.display_name}** BONKED **{member.display_name}**"
+    desc = f"**{ctx.author.display_name}** bonked **{member.display_name}**"
     embed = discord.Embed(description = desc)
 
     bonks = await get_links()
