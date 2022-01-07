@@ -3,6 +3,8 @@ import random
 from discord.commands import slash_command
 from discord.ext import commands
 
+from utils import get_links
+
 
 class Bonk(commands.Cog):
     def __init__(self, bot):
@@ -24,18 +26,10 @@ class Bonk(commands.Cog):
                 desc = f"**{message.author.display_name}** BONKED **{member.display_name}**"
                 embed = discord.Embed(description = desc)
 
-                bonks = await self.get_links()
+                bonks = await get_links()
                 embed.set_image(url=random.choice(bonks))
 
                 await message.channel.send(embed=embed)
-
-    async def get_links(self):
-        with open("../files/text/bonk_links.txt", "r") as f:
-            f_lines = f.readlines()
-            BONKS = []
-            for i in f_lines:
-                BONKS.append(i.strip("\n"))
-        return BONKS
 
 
 def setup(bot):
