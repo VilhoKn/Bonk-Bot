@@ -8,7 +8,7 @@ from info import TOKEN
 intents = discord.Intents.default()
 intents.members = True
 
-bot = commands.Bot(intents=intents)
+bot = discord.Bot(intents=intents)
 
 bot.load_extension('cogs.bonk_command')
 bot.load_extension('cogs.help_command')
