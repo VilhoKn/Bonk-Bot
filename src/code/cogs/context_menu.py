@@ -1,12 +1,11 @@
 import discord
-from discord.app import message_command, user_command, ApplicationContext
-from discord.ext import commands
+from discord.commands import user_command
 
 from utils import get_links
 
 
 class ContextMenuCog(commands.Cog):
-    def __init__(self, bot: commands.Bot):
+    def __init__(self, bot):
         self.bot = bot
 
     @user_command(name='Bonk')
@@ -20,5 +19,5 @@ class ContextMenuCog(commands.Cog):
         await ctx.send(embed=embed)
 
 
-def setup(bot: commands.Bot):
+def setup(bot):
     bot.add_cog(ContextMenuCog(bot))
