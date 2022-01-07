@@ -13,6 +13,9 @@ class Help(commands.Cog):
         if message.author.bot: return
         
         split_message = message.content.split(" ")
+		
+        if len(split_message) < 2:
+            return
         if split_message[0].lower() == "bonk":
             help_string = split_message[1]
             if help_string.lower() == "help":
