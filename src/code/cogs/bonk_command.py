@@ -21,7 +21,7 @@ class Bonk(commands.Cog):
 
                 if not member: return
 
-                desc = f"{message.author.display_name} BONKED {member.display_name}"
+                desc = f"**{message.author.display_name}** BONKED **{member.display_name}**"
                 embed = discord.Embed(description = desc)
 
                 bonks = await self.get_links()
