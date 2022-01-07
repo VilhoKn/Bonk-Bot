@@ -24,7 +24,7 @@ class Bonk(commands.Cog):
                 desc = f"{message.author.display_name} BONKED {member.display_name}"
                 embed = discord.Embed(description = desc)
 
-                bonks = await get_links()
+                bonks = await self.get_links()
                 embed.set_image(random.choice(bonks))
 
                 await message.channel.send(embed=embed)
