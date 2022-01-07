@@ -8,6 +8,7 @@ intents.members = True
 bot = commands.Bot(intents=intents)
 
 bot.load_extension('cogs.bonk_command')
+bot.load_extension('cogs.help_command')
 
 @bot.event
 async def on_ready():
