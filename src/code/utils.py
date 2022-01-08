@@ -9,8 +9,7 @@ async def get_links():
         return BONKS
 
 async def update_commands(command, member):
-	with open("../files/json/command_usage.json", "r") as f:
-		data = json.load(f)
+	data = await get_command_usage()
 	
 	if command not in data:
 		data[command] = {"total":0}
@@ -21,5 +20,12 @@ async def update_commands(command, member):
 	data[command][member_string] += 1
 	data[command]["total"] += 1
 
+	await dump_command_usage(data)
+
+async def get_command_usage():
+	with open("../files/json/command_usage.json", "r") as f:
+		return json.load(f)
+
+async def dump_command_usage(data):
 	with open("../files/json/command_usage.json", "w") as f:
 		json.dump(data, f, indent=4)
