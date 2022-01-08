@@ -12,6 +12,7 @@ bot = discord.Bot(intents=intents)
 
 bot.load_extension('cogs.bonk_command')
 bot.load_extension('cogs.help_command')
+bot.load_extension('cogs.leaderboard_command')
 
 @bot.user_command(name="Bonk this person")
 async def callbackname(ctx, member : discord.Member):
