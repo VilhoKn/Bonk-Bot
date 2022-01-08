@@ -24,6 +24,8 @@ class Leaderboard(commands.Cog):
                 leader_board = {}
                 total = []
                 for i in data["bonk"]:
+                    if i == "total":
+                        continue
                     splitted = i.split("'")
                     username = splitted[0]
                     _id = int(splitted[-1])
