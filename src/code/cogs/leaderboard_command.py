@@ -27,7 +27,6 @@ class Leaderboard(commands.Cog):
                     if i == "total":
                         continue
                     splitted = i.split("'")
-                    print(splitted)
                     username = splitted[1]
                     _id = int(splitted[-2])
                     mem = self.bot.get_user(_id)
@@ -49,7 +48,7 @@ class Leaderboard(commands.Cog):
                         break
                     else:
                         index += 1
-                desc = desc[:-2]
+
                 embed = discord.Embed(title="Bonk Leaderboard",description = desc)
                 await message.channel.send(embed=embed)
                 try:
