@@ -5,7 +5,7 @@ from discord.ext import commands
 
 import utils
 
-class Help(commands.Cog):
+class Leaderboard(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
@@ -21,21 +21,39 @@ class Help(commands.Cog):
             leaderboard_string = split_message[1]
             if leaderboard_string.lower() == "leaderboard" or leaderboard_string.lower() == "leader":
                 data = await utils.get_command_usage()
-                winners = {}
+                leader_board = {}
+                total = []
                 for i in data["bonk"]:
                     splitted = i.split("'")
                     username = splitted[0]
                     _id = int(splitted[-1])
                     mem = self.bot.get_user(_id)
-                    
-                desc = f""
-                embed = discord.Embed(description = desc)
+                    if not mem:
+                        continue
+                    key = data["bonk"][i]
+                    leader_board[key] = _id
+                    total.append(total_amount)
+
+                total = sorted(total, reverse=True)
+                desc = ""
+                index = 1
+                for amt in total:
+                    _id = leader_board[amt]
+                    member = self.bot.get_user(_id)
+                    name = member.name
+                    desc += f"**{name}**: {amt}\n"
+                    if index == 5:
+                        break
+                    else:
+                        index += 1
+                desc = desc[:-2]
+                embed = discord.Embed(title="Bonk Leaderboard",description = desc)
                 await message.channel.send(embed=embed)
                 try:
-                    await utils.update_commands("help", message.author)
+                    await utils.update_commands("leaderboard", message.author)
                 except Exception as e:
                     print("Error: " + e)
 
 
 def setup(bot):
-    bot.add_cog(Help(bot))
+    bot.add_cog(Leaderboard(bot))
