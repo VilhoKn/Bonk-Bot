@@ -27,14 +27,15 @@ class Leaderboard(commands.Cog):
                     if i == "total":
                         continue
                     splitted = i.split("'")
-                    username = splitted[0]
-                    _id = int(splitted[-1])
+                    print(splitted)
+                    username = splitted[1]
+                    _id = int(splitted[-2])
                     mem = self.bot.get_user(_id)
                     if not mem:
                         continue
                     key = data["bonk"][i]
                     leader_board[key] = _id
-                    total.append(total_amount)
+                    total.append(key)
 
                 total = sorted(total, reverse=True)
                 desc = ""
