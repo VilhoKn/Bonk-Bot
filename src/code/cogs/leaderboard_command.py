@@ -37,9 +37,9 @@ class Leaderboard(commands.Cog):
                     key = data["bonk"][i]
                     if key in leader_board.keys():
                       if key not in desimaalit.keys():
-                          desimaalit[key] = 0.01
+                          desimaalit[key] = 0.1
                       key += desimaalit[key]
-                      desimaalit[key] += 0.01
+                      desimaalit[key] += 0.1
                     leader_board[key] = _id
                     total.append(key)
 
