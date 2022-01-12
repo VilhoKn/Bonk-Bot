@@ -36,10 +36,10 @@ class Leaderboard(commands.Cog):
                         continue
                     key = data["bonk"][i]
                     if key in leader_board.keys():
-                      if key not in desimaalit.keys():
-                          desimaalit[key] = 0.1
-                      key += desimaalit[key]
-                      desimaalit[key] += 0.1
+                      if str(key) not in desimaalit.keys():
+                          desimaalit[str(key)] = "0.01"
+                      key += float(desimaalit[str(key)])
+                      desimaalit[str(key)] = str(float(desimaalit[str(key)]) + 0.01)
                     leader_board[key] = _id
                     total.append(key)
 
