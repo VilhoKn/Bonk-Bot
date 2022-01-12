@@ -15,6 +15,8 @@ class Bonk(commands.Cog):
         if message.author.bot: return
         
         split_message = message.content.split(" ")
+        if len(split_message) < 2:
+            return
         if split_message[0].lower() == "bonk":
             mention_string = split_message[1]
             if mention_string[0] == "<" and mention_string[-1] == ">":
