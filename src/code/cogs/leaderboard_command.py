@@ -35,7 +35,8 @@ class Leaderboard(commands.Cog):
                     if not mem:
                         continue
                     key = data["bonk"][i]
-                    if key in leader_board.values():
+                    print(leader_board.values())
+                    if key in leader_board.keys():
                       print("key in")
                       key += desimaali
                       desimaali += 0.1
