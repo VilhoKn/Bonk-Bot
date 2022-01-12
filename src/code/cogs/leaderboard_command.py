@@ -23,6 +23,8 @@ class Leaderboard(commands.Cog):
                 data = await utils.get_command_usage()
                 leader_board = {}
                 total = []
+                desimaali = 0.1
+                
                 for i in data["bonk"]:
                     if i == "total":
                         continue
@@ -33,6 +35,9 @@ class Leaderboard(commands.Cog):
                     if not mem:
                         continue
                     key = data["bonk"][i]
+                    if key in leader_board.values():
+                      key += desimaali
+                      desimaali += 0.1
                     leader_board[key] = _id
                     total.append(key)
 
