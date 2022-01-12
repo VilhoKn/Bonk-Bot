@@ -43,12 +43,12 @@ class Leaderboard(commands.Cog):
                     total.append(key)
 
                 total = sorted(total, reverse=True)
-                print(total)
+
                 desc = ""
                 index = 1
                 for amt in total:
                     _id = leader_board[amt]
-                    print(amt)
+
                     showable = int(amt) if isinstance(amt, float) else amt
                     
                     member = self.bot.get_user(_id)
