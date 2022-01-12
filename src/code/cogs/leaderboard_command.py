@@ -23,7 +23,7 @@ class Leaderboard(commands.Cog):
                 data = await utils.get_command_usage()
                 leader_board = {}
                 total = []
-                desimaalit = {}
+                desimaali = 0.1
                 
                 for i in data["bonk"]:
                     if i == "total":
@@ -36,19 +36,21 @@ class Leaderboard(commands.Cog):
                         continue
                     key = data["bonk"][i]
                     if key in leader_board.keys():
-                      if str(key) not in desimaalit.keys():
-                          desimaalit[str(key)] = "0.01"
-                      key += float(desimaalit[str(key)])
-                      desimaalit[str(key)] = str(float(desimaalit[str(key)]) + 0.01)
+
+                      key += desimaali
+                      desimaali += 0.1
                     leader_board[key] = _id
                     total.append(key)
 
                 total = sorted(total, reverse=True)
+                print(total)
                 desc = ""
                 index = 1
                 for amt in total:
                     _id = leader_board[amt]
+                    print(amt)
                     showable = int(amt) if isinstance(amt, float) else amt
+                    
                     member = self.bot.get_user(_id)
                     name = member.name
                     desc += f"**{name}**: {showable}\n"
